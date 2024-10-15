@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> TemporalBench </title>
+
+  <link rel="icon" href="./static/images/temporalbench-download.png">
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/leaderboard.css">
+  <link rel="stylesheet" href="./static/css/video-player.css">
+
+  <!-- <link href="https://unpkg.com/tabulator-tables@5.5.2/dist/css/tabulator_bulma.min.css" rel="stylesheet">
+  <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.5.2/dist/js/tabulator.min.js"></script> -->
+  <script type="text/javascript" src="static/js/sort-table.js" defer></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/explorer-index.js"></script>
+  <script src="./static/js/question_card.js"></script>
+
+  <script src="./static/js/leaderboard_testmini.js"></script>  
+  <script src="./data/results/output_folders.js" defer></script>
+  <script src="./data/results/model_scores.js" defer></script>
+
+  <script src="./visualizer/data/data_public.js" defer></script>
+
+  <style>
+    .no-sort {
+        cursor: default;
+        pointer-events: none;
+        background-image: none !important; /* Remove the sort arrow */
+    }
+  </style>
+
+</head>
+<body>
+
+  
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <p style="font-size:18px; display: inline; margin-right: -2px; margin-top: 12px;">🔥</p>
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://vinoground.github.io/">
+            <b>Vinoground</b> 
+          </a>
+          <a class="navbar-item" href="https://matryoshka-mm.github.io/">
+            <b>Matryoshka Multimodal Models</b> 
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title is-bold">
+            <img src="static/images/temporalbench-download.png" style="width:1.6em;vertical-align: middle" alt="Logo"/>
+            <span class="video-mme" style="vertical-align: middle">TemporalBench</span>
+            </h1>
+          <h2 class="subtitle is-3 publication-subtitle", style="margin-bottom: 20px;">
+            Benchmarking Fine-grained Temporal Understanding for  <br> Multimodal Video  Models
+          </h2>
+         
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://pages.cs.wisc.edu/~mucai/" style="text-decoration: none; color: inherit;">Mu Cai<sup style="color:#6fbf73;">1,*</sup></a>,
+            </span>
+            <span class="author-block">
+              <a href="https://cs-people.bu.edu/rxtan/" style="text-decoration: none; color: inherit;">Reuben Tan<sup style="color:#ffac33;">2</sup></a>,
+            </span>
+            <span class="author-block">
+              <a href="" style="text-decoration: none; color: inherit;">Jianrui Zhang<sup style="color:#6fbf73;">1</sup></a>,
+            </span>
+            <span class="author-block">
+              <a href="" style="text-decoration: none; color: inherit;">Bocheng Zou<sup style="color:#6fbf73;">1</sup></a>,
+            </span>
+            <span class="author-block">
+              <a href="" style="text-decoration: none; color: inherit;">Kai Zhang<sup style="color:#ed4b82;">3</sup></a>,
+            </span>
+            <span class="author-block">
+              <a href="" style="text-decoration: none; color: inherit;">Feng Yao<sup style="color:#007bff;">4</sup></a>,
+            </span><br>
+            <span class="author-block">
+              <a href="" style="text-decoration: none; color: inherit;">Fangrui Zhu<sup style="color:#9b51e0;">5</sup></a>,
+            </span>
+            <span class="author-block">
+              <a href="" style="text-decoration: none; color: inherit;">Jing Gu<sup style="color:#007bff;">6</sup></a>,
+            </span>
+            <span class="author-block">
+              <a href="" style="text-decoration: none; color: inherit;">Yiwu Zhong<sup style="color:#ffac33;">7</sup></a>,
+            </span>
+            <span class="author-block">
+              <a href="" style="text-decoration: none; color: inherit;">Yuzhang Shang<sup style="color:#ffac33;">8</sup></a>,
+            </span>
+            <span class="author-block">
+              <a href="" style="text-decoration: none; color: inherit;">Yao Dou<sup style="color:#007bff;">9</sup></a>,
+            </span>
+            <span class="author-block">
+              <a href="" style="text-decoration: none; color: inherit;">Jaden Park<sup style="color:#6fbf73;">1</sup></a>,
+            </span><br>
+            <span class="author-block">
+              <a href="https://www.microsoft.com/en-us/research/people/jfgao/?from=https://research.microsoft.com/en-us/um/people/jfgao/&type=exact" style="text-decoration: none; color: inherit;">Jianfeng Gao<sup style="color:#ffac33;">2,&dagger;</sup></a>,
+            </span>
+            <span class="author-block">
+              <a href="https://pages.cs.wisc.edu/~yongjaelee/" style="text-decoration: none; color: inherit;">Yong Jae Lee<sup style="color:#6fbf73;">1,&dagger;</sup></a>,
+            </span>
+            <span class="author-block">
+              <a href="https://jwyang.github.io/" style="text-decoration: none; color: inherit;">Jianwei Yang<sup style="color:#ffac33;">2,&dagger;</sup></a>
+            </span>
+          </div>
+          
+          <br>
+          
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup style="color:#6fbf73;">1</sup><strong> Universityof Wisconsin-Madison</strong>,</span>
+            <span class="author-block"><sup style="color:#ffac33;">2</sup><strong>Microsoft Research, Redmond</strong>,</span>
+            <span class="author-block"><sup style="color:#ed4b82;">3</sup>Ohio State University,</span><br>
+            <span class="author-block"><sup style="color:#007bff;">4</sup>University of California, San Diego,</span>
+            <span class="author-block"><sup style="color:#9b51e0;">5</sup>Northeastern University,</span>
+            <span class="author-block"><sup style="color:#007bff;">6</sup>University of California, Santa Cruz,</span><br>
+            <span class="author-block"><sup style="color:#ffac33;">7</sup>Chinese University of Hong Kong,</span>
+            <span class="author-block"><sup style="color:#ffac33;">8</sup>Illinois Institute of Technology,</span>
+            <span class="author-block"><sup style="color:#007bff;">9</sup>Georgia Institute of Technology</span>
+          </div>
+          
+          <div class="is-size-6 publication-authors">
+          <br>
+            <span class="author-block"><sup>*</sup>Work done during the internship at Microsoft Research</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <span class="author-block"><sup>&dagger;</sup>Equal Advising</span>
+          </div>
+
+
+          <!-- <div class="is-size-5 publication-authors", style="width: 80%; margin: 20px auto;", >
+            <span class="author-block", style="font-size:24px"><a href="https://github.com/BradyFU/TemporalBench">TemporalBench Team</a></span>
+
+        </div> -->
+
+          <div class="is-size-5 publication-authors">
+            <!-- <span class="author-block"><sup style="color:#6fbf73;">1</sup>USTC,</span>
+            <span class="author-block"><sup style="color:#ed4b82">2</sup>XMU,</span>
+            <span class="author-block"><sup style="color:#9400D3">3</sup>HKU,</span>
+            <span class="author-block"><sup style="color:#ffac33">4</sup>PKU,</span>
+            <span class="author-block"><sup style="color:#18acfb">5</sup>CUHK,</span>
+            <span class="author-block"><sup style="color:#33ffd6">6</sup>ECNU</span><br> -->
+            <!-- <span class="paper-block"><b style="color:#f41c1c">ICLR 2024 Oral</b> (85 in 7304, 1.2%)</span> -->
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/xxx"
+                   class="external-link button is-normal is-rounded is-dark">
+                <!-- <a href="https://lupantech.github.io/papers/arxiv23_mathvista.pdf"
+                   class="external-link button is-normal is-rounded is-dark"> -->
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/mu-cai/TemporalBench"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/microsoft/TemporalBench"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <!-- <i class="far fa-images"></i> -->
+                      <p style="font-size:18px">📊</p>
+                  </span>
+                  <span>Dataset</span>
+                </a>
+              </span> 
+              <!-- Leaderboard Link. -->
+              <span class="link-block">
+                <a href="#leaderboard"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <p style="font-size:18px">🏆</p>
+                  </span>
+                  <span>Leaderboard</span>
+                </a>
+              </span>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container" style="margin-bottom: 2vh;">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Introduction</h2>
+        <div class="content has-text-justified">
+Understanding <strong>fine-grained temporal dynamics</strong> is crucial for multimodal video comprehension and generation. <strong>Due to the lack of fine-grained temporal annotations</strong>, existing video benchmarks mostly resemble static image benchmarks and are incompetent at evaluating models for temporal understanding. In this paper, we introduce TemporalBench, a new benchmark dedicated to evaluating fine-grained temporal understanding in videos. TemporalBench consists of <strong>~10K</strong> video question-answer pairs, derived from <strong>~2K</strong> high-quality human annotations detailing the temporal dynamics in video clips. As a result, our benchmark provides a unique testbed for evaluating various temporal understanding and reasoning abilities such as action frequency, motion magnitude, event order, etc. Moreover, it enables evaluations on various tasks like both video question answering and captioning, both short and long video understanding, as well as different models such as multimodal video embedding models and text generation models. Results show that <strong>state-of-the-art models like GPT-4o achieve only 38.5% question answering accuracy on TemporalBench</strong>, demonstrating a significant gap (~30%) between humans and AI in temporal understanding. Furthermore, we notice a critical pitfall for multi-choice QA where LLMs can detect the subtle changes in negative captions and find a centralized description as a cue for its prediction, where we propose Multiple Binary Accuracy (MBA) to correct such bias. We hope that TemporalBench can foster research on improving models' temporal reasoning capabilities. Both dataset and evaluation code will be made available.
+
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+</div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    updateRowNumbers();
+    document.querySelector("#results").addEventListener("click", updateRowNumbers);
+  });
+
+  function updateRowNumbers() {
+    const rows = document.querySelectorAll("#results tbody tr");
+    rows.forEach((row, index) => {
+      row.querySelector("td").innerText = index + 1;
+    });
+  }
+</script>
+
+<section class="section">
+  <div class="container">
+    
+    <div class="columns is-centered">
+      <div class="column is-full has-text-centered content">
+
+        <h2 class="title is-3" id="leaderboard">Leaderboard</h2>
+        <div class="content">
+          <p class="mt-3">Accuracy scores on TemporalBench are presented for short video and long video question answering accuracy, reflected by both binary accuracy and multiple binary accuracy. Furthermore, we provide results on short video captioning. Overall QA denotes the average performance between </p>
+          </p>
+          <div class="video-duration">
+            <p>
+              <strong>Short Video:</strong> [0,20] seconds  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              <strong>Long Video:</strong> [0,20] minutes
+            </p>
+            <p>
+              The leaderboard is sorted by multiple binary accuracy on short videos by default. To view other sorted results, please click on the corresponding cell.
+            </p>
+          </div>
+
+
+
+
+
+
+
+
+
+    <table class="js-sort-table" id="results" style="margin-left: auto; margin-right: auto;">
+      <thead>
+        <tr>
+          <th rowspan="2" class="no-sort" style="vertical-align: middle; width: 50px;" data-js-sort-colNum="none"><strong>#</strong></th>
+          <th rowspan="2" class="no-sort" style="vertical-align: middle; width: 210px;" data-js-sort-colNum="none"><strong>Model</strong></th>
+          <th rowspan="2" class="no-sort" style="vertical-align: middle; width: 100px;" data-js-sort-colNum="none"><strong>Frames</strong></th>
+          <th rowspan="2" class="no-sort" style="vertical-align: middle; width: 110px;" data-js-sort-colNum="none"><strong>Date</strong></th>
+          <th colspan="2" style="vertical-align: middle; width: 300px; background-color: #f7f7f7;"  data-js-sort-colNum="4"><strong>Overall QA (%)</strong></th>
+          <th colspan="2" style="vertical-align: middle; width: 300px; background-color: #e3f2fd;"  data-js-sort-colNum="6"><strong>Short Video QA (%)</strong></th>
+          <th colspan="2" style="vertical-align: middle; width: 300px; background-color: #d9ead3;"  data-js-sort-colNum="8"><strong>Long Video QA (%)</strong></th>
+          <!-- <th rowspan="2" class="no-sort" style="vertical-align: middle; width: 150px; background-color: #fff2cc;"  data-js-sort-colNum="11"><strong>Similarity (%)</strong></th>
+            -->
+            <th colspan="1" style="vertical-align: middle; width: 150px; background-color: #fff2cc;"  data-js-sort-colNum="10"><strong>Detailed Captioning</strong></th>
+
+            <!--  background-color: #fff2cc; -->
+        </tr>
+        <tr>
+          <th style = "background-color: #f7f7f7;", data-js-sort-colNum="4"><strong>Multiple Binary Accuracy</strong></th>
+          <th  style = "background-color: #f7f7f7;", data-js-sort-colNum="5"><strong>Binary Accuracy</strong></th>
+          <th  style = "background-color: #e3f2fd;", data-js-sort-colNum="6"><strong>Multiple Binary Accuracy</strong></th>
+          <th style = "background-color: #e3f2fd;",data-js-sort-colNum="7"><strong>Binary Accuracy</strong></th>
+          <th style = "background-color: #d9ead3;", data-js-sort-colNum="8"><strong>Multiple Binary Accuracy</strong></th>
+          <th style = "background-color: #d9ead3;", data-js-sort-colNum="9"><strong>Binary Accuracy</strong></th>
+          <th style = "background-color: #fff2cc;",  data-js-sort-colNum="10"><strong>Similarity</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+      
+        <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">Human Performance
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">- </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" >-</strong></td>
+          <td style="vertical-align: middle;"><b class="">-</b></td>
+          <td style="vertical-align: middle;"><b class="">-</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;"><strong>67.9</strong></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;"><strong>89.7</strong></td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">-</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">-</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">-</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">Random Chance
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">- </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" >-</strong></td>
+          <td style="vertical-align: middle;"><b class="">09.5</b></td>
+          <td style="vertical-align: middle;"><b class="">50.0</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">09.5</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">50.0</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">09.5</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">50.0</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">-</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">GPT-4o
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">64 </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" >2024-06-15</strong></td>
+          <td style="vertical-align: middle;"><b class="">35.3</b></td>
+          <td style="vertical-align: middle;"><b class="">73.2</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">38.0</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">76.0</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">32.7</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">70.5</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">63.5</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">GPT-4o
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">32 </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" >2024-06-15</strong></td>
+          <td style="vertical-align: middle;"><b class="">32.9</b></td>
+          <td style="vertical-align: middle;"><b class="">71.5</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">38.3</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">75.9</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">27.4</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">67.0</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">63.2</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">GPT-4o
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">16 </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" >2024-06-15</strong></td>
+          <td style="vertical-align: middle;"><b class="">34.3</b></td>
+          <td style="vertical-align: middle;"><b class="">72.8</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">38.5</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">75.7</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">30.1</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">69.8</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">61.3</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">Gemini-1.5-Pro
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">1FPS </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" >2024-08-01</strong></td>
+          <td style="vertical-align: middle;"><b class="">25.6</b></td>
+          <td style="vertical-align: middle;"><b class="">66.4</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">26.6</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">67.5</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">24.7</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">65.2</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">56.5</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">Claude-3.5-Sonnet
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">8 </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" >2024-07-30</strong></td>
+          <td style="vertical-align: middle;"><b class="">23.2</b></td>
+          <td style="vertical-align: middle;"><b class="">64.1</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">23.5</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">65.9</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">22.9</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">62.4</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">54.1</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">Claude-3.5-Sonnet
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">8 </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" >2024-07-30</strong></td>
+          <td style="vertical-align: middle;"><b class="">24.1</b></td>
+          <td style="vertical-align: middle;"><b class="">65.0</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">23.6</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">65.5</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">24.5</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">64.6</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">53.1</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">Qwen2-VL-72B
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">32 </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" >2024-06-15</strong></td>
+          <td style="vertical-align: middle;"><b class="">31.7</b></td>
+          <td style="vertical-align: middle;"><b class="">70.2</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">38.3</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">75.8</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">25.0</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">64.5</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">56.1</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">Qwen2-VL-72B
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">8 </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" >2024-06-15</strong></td>
+          <td style="vertical-align: middle;"><b class="">30.1</b></td>
+          <td style="vertical-align: middle;"><b class="">68.9</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">34.0</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">73.1</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">26.2</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">64.7</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">51.4</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">Qwen2-VL-7B
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">32 </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" >2024-06-15</strong></td>
+          <td style="vertical-align: middle;"><b class="">21.7</b></td>
+          <td style="vertical-align: middle;"><b class="">62.0</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">24.7</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">64.4</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">18.8</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">59.7</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">51.9</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">LLaVA-OneVision-72B
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">32 </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" >2024-08-08</strong></td>
+          <td style="vertical-align: middle;"><b class="">26.6</b></td>
+          <td style="vertical-align: middle;"><b class="">66.6</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">30.7</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">70.5</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">22.4</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">62.7</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">53.9</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">LLaVA-OneVision-72B
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">8 </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" >2024-08-08</strong></td>
+          <td style="vertical-align: middle;"><b class="">28.1</b></td>
+          <td style="vertical-align: middle;"><b class="">67.8</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">33.0</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">72.1</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">23.1</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">63.6</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">55.0</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">LLaVA-OneVision-7B
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">32 </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" >2024-08-08</strong></td>
+          <td style="vertical-align: middle;"><b class="">18.7</b></td>
+          <td style="vertical-align: middle;"><b class="">59.4</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">21.2</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">61.9</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">16.2</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">56.9</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">50.1</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">LLaVA-NeXT-Video-34B
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">32 </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" >2024-04-30</strong></td>
+          <td style="vertical-align: middle;"><b class="">19.9</b></td>
+          <td style="vertical-align: middle;"><b class="">61.1</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">22.0</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">64.0</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">17.7</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">58.2</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">53.1</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">LLaVA-NeXT-Video-7B
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">8 </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" >2024-04-30</strong></td>
+          <td style="vertical-align: middle;"><b class="">20.5</b></td>
+          <td style="vertical-align: middle;"><b class="">61.2</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">23.6</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">65.1</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">17.3</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">57.2</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">50.1</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">InternLM-XC2.5
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">1FPS </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" >2024-04-30</strong></td>
+          <td style="vertical-align: middle;"><b class="">16.7</b></td>
+          <td style="vertical-align: middle;"><b class="">57.3</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">17.9</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">58.8</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">15.6</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">55.8</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">52.4</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">VideoLLaVA
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">8 </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" >2023-11-16</strong></td>
+          <td style="vertical-align: middle;"><b class="">20.3</b></td>
+          <td style="vertical-align: middle;"><b class="">61.5</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">25.5</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">67.1</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">15.1</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">56.0</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">46.0</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">MiniCPM-V2.6
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">1FPS </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" >2024-08-12</strong></td>
+          <td style="vertical-align: middle;"><b class="">20.4</b></td>
+          <td style="vertical-align: middle;"><b class="">61.3</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">21.4</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">62.3</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">19.3</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">60.3</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">47.2</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">Phi-3.5-Vision
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">2 </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" >2024-08-16</strong></td>
+          <td style="vertical-align: middle;"><b class="">15.5</b></td>
+          <td style="vertical-align: middle;"><b class="">56.2</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">16.9</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">58.0</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">14.1</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">54.4</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">42.9</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">MA-LMM
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">4 </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" >2024-04-08</strong></td>
+          <td style="vertical-align: middle;"><b class="">09.1</b></td>
+          <td style="vertical-align: middle;"><b class="">47.4</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">09.2</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">48.0</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">9.0</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">46.9</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">38.7</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">M3
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">6 </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" >2024-05-27</strong></td>
+          <td style="vertical-align: middle;"><b class="">13.3</b></td>
+          <td style="vertical-align: middle;"><b class="">54.7</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">14.8</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">56.4</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">11.8</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">53.1</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">47.8</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">GPT-4o
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">1 </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" >2024-06-15</strong></td>
+          <td style="vertical-align: middle;"><b class="">26.4</b></td>
+          <td style="vertical-align: middle;"><b class="">67.3</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">28.4</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">70.0</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">24.5</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">64.7</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">52.3</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">LLaVA-1.5-13B
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">1 </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" >2023-10-05</strong></td>
+          <td style="vertical-align: middle;"><b class="">13.7</b></td>
+          <td style="vertical-align: middle;"><b class="">55.1</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">13.1</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">55.7</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">14.2</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">54.5</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">47.9</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">LLaVA-1.5-7B
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">1 </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" >2023-10-05</strong></td>
+          <td style="vertical-align: middle;"><b class="">15.3</b></td>
+          <td style="vertical-align: middle;"><b class="">56.8</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">18.3</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">60.5</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">12.3</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">53.2</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">45.7</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">LLaVA-NeXT-34B
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">1 </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" >2024-01-30</strong></td>
+          <td style="vertical-align: middle;"><b class="">19.0</b></td>
+          <td style="vertical-align: middle;"><b class="">60.5</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">18.0</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">60.5</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">19.9</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">60.5</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">49.1</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">Phi-3-Vision
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">1 </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" >2024-05-19</strong></td>
+          <td style="vertical-align: middle;"><b class="">15.4</b></td>
+          <td style="vertical-align: middle;"><b class="">55.2</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">15.1</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">54.4</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">15.6</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">56.0</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">42.0</td>
+        </tr>
+
+    <!-- <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">GPT-4o
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">0 </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" >2024-06-15</strong></td>
+          <td style="vertical-align: middle;"><b class="">27.4</b></td>
+          <td style="vertical-align: middle;"><b class="">67.7</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">26.5</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">67.7</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">28.2</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">67.6</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">-</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">Gemini-1.5-Pro
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">0 </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" >2024-08-01</strong></td>
+          <td style="vertical-align: middle;"><b class="">18.6</b></td>
+          <td style="vertical-align: middle;"><b class="">60.1</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">16.1</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">58.1</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">21.2</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">62.2</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">-</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">Yi-34B
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">0 </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" ></strong></td>
+          <td style="vertical-align: middle;"><b class="">18.5</b></td>
+          <td style="vertical-align: middle;"><b class="">59.7</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">18.7</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">59.9</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">18.4</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">59.5</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">-</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">Vicuna7b-1-5
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">0 </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" ></strong></td>
+          <td style="vertical-align: middle;"><b class="">10.1</b></td>
+          <td style="vertical-align: middle;"><b class="">50.8</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">10.4</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">50.5</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">9.9</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">51.1</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">-</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">Flan-T5-XL
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">0 </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" ></strong></td>
+          <td style="vertical-align: middle;"><b class="">18.6</b></td>
+          <td style="vertical-align: middle;"><b class="">59.0</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">17.9</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">57.9</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">19.4</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">60.1</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">-</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">Flan-T5-XXL
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">0 </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" ></strong></td>
+          <td style="vertical-align: middle;"><b class="">15.9</b></td>
+          <td style="vertical-align: middle;"><b class="">56.0</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">15.1</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">55.1</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">16.7</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">56.9</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">-</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">XCLIP
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">8 </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" ></strong></td>
+          <td style="vertical-align: middle;"><b class="">12.0</b></td>
+          <td style="vertical-align: middle;"><b class="">51.7</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">12.9</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">53.0</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">11.1</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">51.7</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">-</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">ImageBind
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">2 </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" ></strong></td>
+          <td style="vertical-align: middle;"><b class="">12.4</b></td>
+          <td style="vertical-align: middle;"><b class="">52.0</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">14.0</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">53.0</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">10.7</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">51.0</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">-</td>
+        </tr>
+
+    <tr>
+          <td style="vertical-align: middle;"></td>
+          <td style="text-align: left; padding: 2px 10px;"><b class=""><a href="" class="ext-link" style="font-size: 16px; margin-left: 5px;">LanguageBind
+            <p style="font-size: 12px; margin-left: 5px; color: #858383;"></p>
+          </a></b></td>
+          <td style="vertical-align: middle;">8 </td>
+          <td style="vertical-align: middle;"><strong style="color: #22a56e;" ></strong></td>
+          <td style="vertical-align: middle;"><b class="">13.3</b></td>
+          <td style="vertical-align: middle;"><b class="">52.2</b></td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">14.5</td>
+          <td style="vertical-align: middle; background-color: #e3f2fd;">52.8</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">12.0</td>
+          <td style="vertical-align: middle; background-color: #d9ead3;">51.6</td>
+          <td style="vertical-align: middle; background-color: #fff2cc;">-</td>
+        </tr> -->
+
+
+      </tbody>                                              
+  </table> 
+
+
+
+
+        <p style="margin-top: -20px;">
+          <!-- <strong style="color: #22a56e; font-size: 18px;" >Green date</strong> indicates the newly added/updated models  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+          - indicates closed-source models -->
+        </p>
+
+        <!-- <p style=" text-align: left;">
+          1* The short and medium videos are sampled at 1 fps, while the long videos are sampled at 0.5 fps to ensure the stability of the API.
+          </br>2* The videos less than 384 seconds are sampled at 1 fps, and for those longer than 384 seconds, we extract 384 frames uniformly. All the frames are resized to 512x512 resolution to fit within GPT-4o’s max context length.
+          </br>3* The videos are sampled at 2 fps, and the upper limit is 768 frames.
+        </p> -->
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DATASET SECTION -->
+<section class="hero is-light is-small">
+  <div class="hero-body has-text-centered">
+  <h1 class="title is-1 mathvista_other">
+    <span class="mathvista_other" style="vertical-align: middle">Benchmark Curation</span>
+  </h1>
+  </div>
+</section>
+            
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content has-text-centered">
+          <h2 class="title is-3">TemporalBench Own Much More Details than Piror Works</h2>
+
+          <img src="static/images/teaser-enlarged-v1.png" alt="data-composition" style="max-width: 80%;"/>
+          <br>
+
+          <p style="text-align: center; margin-left: auto; margin-right: auto; width: 90%;  font-size: 1.1em;" >
+            <strong>The tasks of TemporalBench.</strong> TemporalBench starts from fine-grained video descriptions
+and supports diverse video understanding tasks including video QA, video captioning, long video
+understanding, etc. It differs from existing benchmarks by the average number of words per video
+(middle top), word density (center) and the coverage of various temporal aspects (middle bottom).
+          </p>
+          <br>
+          <br>
+          <br>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content has-text-centered">
+          <h2 class="title is-3">Benchmark is from Human Annotation </h2>
+
+          <img src="static/images/concept.png" alt="data-composition" style="max-width: 70%;"/>
+          <br>
+
+          <p style="text-align: center; margin-left: auto; margin-right: auto; width: 80%; font-size: 1.1em;" >
+            <strong>Overview of the annotation pipeline for TemporalBench.</strong>   In step 1, we fist collect
+high-quality captions for the videos using qualified AMT annotators followed by refining them.
+In step 2, we leverage existing LLMs to generate negative captions by replacing select words and
+reordering the sequence of actions before filtering them ourselves.
+centric.
+          </p>
+          <br>
+          <br>
+          <br>
+
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content has-text-centered">
+          <h2 class="title is-3">Benchmark Own High-quality Negatives</h2>
+
+          <img src="static/images/high-quality-negative-compare.png" alt="data-composition" style="max-width: 80%;"/>
+          <br>
+          <p style="text-align: center; margin-left: auto; margin-right: auto; width: 90%; font-size: 1.1em;" >
+            <strong>Comparsion of negative captions generated from the original captions and our detailed
+captions in TemporalBench.</strong>  With fine-grained details, the negatives are more difficult and temporal
+centric.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<!-- RESULTS SECTION -->
+<section class="hero is-light is-small">
+  <div class="hero-body has-text-centered">
+    <h1 class="title is-1 mathvista_other">Experiment Results</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="columns is-centered m-6">
+      <div class="column is-full has-text-centered content">
+        <h2 class="title is-3">Different Question Types</h2>
+          <div class="box m-5">
+            <div class="content has-text-centered">
+              <img src="static/images/radar_per_subset_category.png" alt="grade-lv" width="90%"/>
+              <p style="text-align: center; margin-left: auto; margin-right: auto; width: 90%; font-size: 1.1em;" >
+                <strong>All current LMMs have a large gap compared to human performance.</strong>  Visualization of binary accuracy for short video QA per (a) subset and (b) negative type. Human performance is much better than GPT-4o, Qwen2-VL-72B, LLaVA-OneVision-72B, and Gemini-1.5-Pro.
+              </p>
+              
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered m-6">
+      <div class="column is-full has-text-centered content">
+        <h2 class="title is-3">More Frames Helps, but Not Much</h2>
+
+          <div class="box m-5">
+            <div class="content has-text-centered">
+              <img src="static/images/paper_model_accuracy_vs_frames_broken_yaxis.png" alt="" width="70%"/>
+              <p style="text-align: center; margin-left: auto; margin-right: auto; width: 90%; font-size: 1.1em;" >
+                <strong>Model performance on TemporalBench with varying frames on short video understanding.</strong>  With more frames, LMMs mostly perform better, but the improvement is limited.
+              </p>
+
+            </div>
+          </div>
+
+      </div>
+    </div>
+
+
+    <div class="columns is-centered m-6">
+      <div class="column is-full has-text-centered content">
+        <h2 class="title is-3">A Pitfall in Multi-choice Question Answering</h2>
+
+          <div class="box m-5">
+            <div class="content has-text-centered">
+              <img src="static/images/negative-dummy-figure-v4.png" alt="" width="70%"/>
+              <p style="text-align: center; margin-left: auto; margin-right: auto; width: 90%; font-size: 1.1em;" >
+                <p>While developing our benchmark, we noticed another previously ignored but critical pitfall for multi-choice QA. Specifically, if every negative answer choice is generated by changing a small part of the correct answer, the LLM can detect those changes to find a <em>centralized</em> description and use that cue for its prediction. To study this, given a positive caption <code>C</code> and its associated negative caption <code>N(C)</code>, we intentionally derive a few negatives from <code>N_1(C)</code> (instead of for <code>C</code>), resulting in <code>N_1(N_1(C))</code> and <code>N_2(N_1(C))</code>, resulting in <code>[C, N_1(C), N_1(N_1(C)), N_2(N_1(C))]</code> as options, so that <code>N_1(C)</code> becomes the <em>centralized</em> description (see Fig.~ref{fig:negative_captions_generation}). Surprisingly, we find that 66.4% of text-only GPT-4o's predictions correspond to <code>N(C)</code>, while only 6.4% of its predictions correspond to <code>C</code>. Our findings also align with human behavior analysis from psychology (Furman et al., 2008), where humans can achieve better than random chance performance on multi-choice QAs using similar cues.</p>
+
+<p>Motivated by these findings, we propose to decompose a single multi-choice QA into multiple binary QAs. In this case, we eliminate the <em>centralized option</em> due to the fact that there are only two options to choose from. As a result, given <code>M</code> negatives, the multiple binary QAs will query a model <code>M</code> times, where the random chance performance changes from <code>1 / (M+1)</code> to <code>(1/2)^M</code>. Given that <code>(1/2)^M > 1 / (M+1)</code> for every <code>M > 2</code>, multiple binary QA is a more difficult task than multi-choice QA.</p>
+
+              </p>
+              <img src="static/images/centrraliza_caption_table.png" alt="" width="50%"/>
+
+
+            </div>
+          </div>
+
+      </div>
+    </div>
+
+
+
+    <div class="columns is-centered m-6">
+      <div class="column is-full has-text-centered content">
+        <h2 class="title is-3">GPT-4o Fails in Distinguishing Basic Temporal Dynamics</h2>
+
+          <div class="box m-5">
+            <div class="content has-text-centered">
+              <img src="static/images/GPT-4o failture cases.png" alt="" width="70%"/>
+              <!-- <p style="text-align: center; margin-left: auto; margin-right: auto; width: 90%; font-size: 1.1em;" >
+                <strong>Model performance on TemporalBench with varying frames on short video understanding.</strong>  With more frames, LMMs mostly perform better, but the improvement is limited.
+              </p> -->
+
+            </div>
+          </div>
+
+      </div>
+    </div>
+
+
+
+
+  </div>
+</section>
+
+
+</section>
+<section class="hero is-light is-small">
+  <div class="hero-body has-text-centered">
+    <h1 class="title is-1 mathvista_other" id="citation">Citation</h1>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <pre><code>
+      @article{cai2024temporalbench,
+        title={TemporalBench: Towards Fine-grained Temporal Understanding for Multimodal Video Models},
+        author={Mu, Cai and Tan, Reuben and Zhang, Jianrui and Zou, Bocheng and Zhang, Kai and Yao, Feng and Zhu, Fangrui and Gu, Jing and Zhong, Yiwu and Shang, Yuzhang and Dou, Yao and Park, Jaden and Gao, Jianfeng and Lee, Yong Jae and Yang, Jianwei},
+        journal={arXiv preprint arXiv:xxxx},
+        year={2024}
+      }
+      
+</code></pre>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container" style="width: 60%;">
+  <style>
+      pre {
+        background-color: #f4f4f4;
+        padding: 5px; /* 调整padding为5px */
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        overflow-x: auto; /* 允许水平滚动 */
+    }
+    code {
+        font-family: Consolas, "Courier New", monospace;
+        color: #d63384; /* 代码文本颜色 */
+    }
+  </style>
+
+
+  </div>
+</section>
+
+
+<footer class="footer">
+  <!-- <div class="container"> -->
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p style="text-align: center;">
+            This website is adapted from <a href="https://mathvista.github.io/">MathVista</a>, licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  <!-- </div> -->
+</footer>
+
+</body>
+</html>
+
